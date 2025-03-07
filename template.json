@@ -1,0 +1,33 @@
+{
+  "name": "Ruby on Rails 8 with Authentication",
+  "description": "A Ruby on Rails 8 application with built-in authentication and Postgres database",
+  "services": [
+    {
+      "name": "rails-app",
+      "github": {
+        "repo": "sunilshenoy/rails8-auth-template"
+      },
+      "env": {
+        "RAILS_ENV": "production",
+        "RAILS_MASTER_KEY": "${RAILS_MASTER_KEY}"
+      },
+      "buildCommand": "bundle install && rails assets:precompile && rails db:migrate && rails db:seed",
+      "startCommand": "rails server -b 0.0.0.0"
+    },
+    {
+      "name": "postgres",
+      "image": "postgres:latest",
+      "env": {
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
+      }
+    }
+  ],
+  "variables": {
+    "POSTGRES_PASSWORD": {
+      "default": "postgres"
+    },
+    "RAILS_MASTER_KEY": {
+      "required": true
+    }
+  }
+}
