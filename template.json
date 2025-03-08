@@ -29,6 +29,12 @@
   ],
   "secrets": [
     {
+      "name": "SECRET_KEY_BASE",
+      "description": "The Rails secret key base for production environment",
+      "required": true,
+      "generate": true
+    },
+    {
       "name": "RAILS_MASTER_KEY",
       "description": "The Rails master key for decrypting credentials",
       "required": true
